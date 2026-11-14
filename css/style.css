@@ -179,7 +179,7 @@ p + p { margin-top: 1em; }
   height: 100svh;
   min-height: 560px;
   overflow: hidden;
-  background: #000 url("/images/hero-01.jpg") center / cover no-repeat;
+  background: #000 url("../images/hero-01.jpg") center / cover no-repeat;
 }
 .hero__slide {
   position: absolute;
@@ -190,8 +190,8 @@ p + p { margin-top: 1em; }
   animation: heroFade 14s infinite;
   transform: scale(1.04);
 }
-.hero__slide:nth-child(1) { background-image: url("/images/hero-01.jpg"); animation-delay: 0s; }
-.hero__slide:nth-child(2) { background-image: url("/images/hero-02.jpg"); animation-delay: 7s; }
+.hero__slide:nth-child(1) { background-image: url("../images/hero-01.jpg"); animation-delay: 0s; }
+.hero__slide:nth-child(2) { background-image: url("../images/hero-02.jpg"); animation-delay: 7s; }
 @keyframes heroFade {
   0%   { opacity: 0; transform: scale(1.08); }
   8%   { opacity: 1; }
@@ -284,14 +284,14 @@ p + p { margin-top: 1em; }
 /* ------------------------------------------------------------------ セクション共通 */
 .section { padding: clamp(64px, 9vw, 120px) 0; position: relative; }
 .section--texture {
-  background: var(--bg) url("/images/bg-texture.jpg") repeat;
+  background: var(--bg) url("../images/bg-texture.jpg") repeat;
   background-size: 400px;
 }
 .section--texture::before { content: ""; position: absolute; inset: 0; background: rgba(30,30,30,0.72); pointer-events: none; }
 .section--texture > * { position: relative; }
 .section--dark { background: #171717; }
 .section--wall {
-  background: #1a1a1a url("/images/bg-wall.jpg") center / cover fixed;
+  background: #1a1a1a url("../images/bg-wall.jpg") center / cover fixed;
 }
 .section--wall::before { content: ""; position: absolute; inset: 0; background: rgba(20,20,20,0.82); }
 .section--wall > * { position: relative; }
@@ -470,7 +470,7 @@ p + p { margin-top: 1em; }
   color: #fff;
   text-align: center;
   padding: clamp(60px, 10vw, 120px) 16px;
-  background: url("/images/sister-head.jpg") center / cover;
+  background: url("../images/sister-head.jpg") center / cover;
 }
 .sister-banner::before { content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.6); transition: background 0.4s; }
 .sister-banner:hover { color: #fff; }
@@ -484,7 +484,7 @@ p + p { margin-top: 1em; }
 /* ------------------------------------------------------------------ フッター */
 .site-footer {
   position: relative;
-  background: var(--footer-bg) url("/images/bg-footer.jpg") repeat;
+  background: var(--footer-bg) url("../images/bg-footer.jpg") repeat;
   color: var(--fg);
   padding: 64px 0 calc(32px + var(--bottombar-h));
   box-shadow: 0 0 10px rgba(0,0,0,0.9) inset;

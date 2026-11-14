@@ -38,10 +38,15 @@
   }
 
   /* 現在ページのナビをハイライト */
+  function navTarget(a) {
+    var raw = a.getAttribute('href') || '';
+    if (!raw || raw.indexOf('#') !== -1 || /^(https?:|mailto:|tel:)/.test(raw)) return null;
+    return { p: new URL(raw, location.href).pathname.replace(/index\.html$/, ''), home: /^(\.\.?\/)*$/.test(raw) };
+  }
   var path = location.pathname.replace(/index\.html$/, '');
   document.querySelectorAll('.gnav__list a').forEach(function (a) {
-    var href = a.getAttribute('href');
-    if (href && href.indexOf('#') === -1 && href === path) {
+    var t = navTarget(a);
+    if (t && t.p === path) {
       a.setAttribute('aria-current', 'page');
     }
   });
