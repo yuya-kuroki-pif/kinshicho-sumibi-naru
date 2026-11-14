@@ -44,6 +44,8 @@ a:hover { color: var(--gold-light); }
 ul, ol { list-style: none; }
 h1, h2, h3, h4 { font-weight: 400; line-height: 1.6; letter-spacing: 0.12em; }
 p + p { margin-top: 1em; }
+p, .news-list span, .media-list .title { text-wrap: pretty; }
+.nowrap { white-space: nowrap; }
 
 .inner { width: min(1100px, 100% - 32px); margin-inline: auto; }
 .inner--narrow { width: min(820px, 100% - 32px); margin-inline: auto; }
@@ -203,7 +205,9 @@ p + p { margin-top: 1em; }
   content: "";
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.05) 40%, rgba(30,30,30,0.9) 100%);
+  background:
+    radial-gradient(ellipse 34% 40% at 50% 50%, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.3) 45%, rgba(0,0,0,0) 100%),
+    linear-gradient(to bottom, rgba(0,0,0,0.35) 0%, rgba(0,0,0,0.05) 40%, rgba(30,30,30,0.9) 100%);
 }
 .hero__logo {
   position: absolute;
@@ -211,7 +215,7 @@ p + p { margin-top: 1em; }
   left: 50%; top: 50%;
   transform: translate(-50%, -50%);
   width: 92px;
-  filter: drop-shadow(0 4px 16px rgba(0,0,0,0.6));
+  filter: drop-shadow(0 4px 16px rgba(0,0,0,0.8)) drop-shadow(0 0 28px rgba(0,0,0,0.6));
   opacity: 0;
   animation: fadeIn 1.6s 0.4s forwards;
 }
@@ -352,23 +356,35 @@ p + p { margin-top: 1em; }
 .catch__img::before {
   content: "";
   position: absolute;
-  inset: 18px -18px -18px 18px;
+  inset: 16px -16px -16px 16px;
   border: 1px solid var(--gold-dark);
   z-index: -1;
 }
-@media (min-width: 900px) {
+@media (min-width: 1024px) {
+  .catch:has(.catch__text--tategaki) { grid-template-columns: 1.15fr 1fr; }
+  /* 縦書きキャッチ：見出し→本文を右から左へ並べ、ボタンは下段に。
+     本文は <br> を無効にして高さで折り返す（幅のはみ出し防止） */
   .catch__text--tategaki {
     display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
     justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 1.6em 1.7em;
+  }
+  .catch__text--tategaki h1,
+  .catch__text--tategaki p {
     writing-mode: vertical-rl;
     text-orientation: upright;
-    max-height: 640px;
-    gap: 2.2em;
+    flex: none;
+    margin: 0;
+    height: 540px;
   }
-  .catch__text--tategaki h1 { margin: 0 0 0 1em; line-height: 2; font-size: clamp(1.5rem, 2.6vw, 2rem); }
-  .catch__text--tategaki p { margin: 0; line-height: 2.6; }
-  .catch__text--tategaki p + p { margin-right: 1.4em; }
-  .catch__text--tategaki .btn-wrap { writing-mode: horizontal-tb; align-self: flex-end; margin-right: 2em; }
+  .catch__text--tategaki h1 { line-height: 2; font-size: clamp(1.5rem, 2.6vw, 2rem); margin-left: 0.6em; }
+  .catch__text--tategaki p { line-height: 2.3; text-wrap: balance; }
+  .catch__text--tategaki p br { display: none; }
+  .catch__text--tategaki .btn-wrap { flex: 0 0 100%; display: flex; justify-content: center; }
   .catch__text--tategaki .btn { margin: 0; }
 }
 
@@ -555,18 +571,28 @@ p + p { margin-top: 1em; }
   object-fit: cover;
   box-shadow: 0 20px 50px rgba(0,0,0,0.55);
 }
-@media (min-width: 900px) {
+@media (min-width: 1024px) {
+  .concept-block--tategaki { grid-template-columns: 1.15fr 1fr; }
   .concept-block--tategaki .concept-block__text {
+    display: flex;
+    flex-direction: row-reverse;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 1.6em 1.7em;
+  }
+  .concept-block--tategaki h2,
+  .concept-block--tategaki .concept-block__text > p {
     writing-mode: vertical-rl;
     text-orientation: upright;
-    max-height: 600px;
-    display: flex;
-    justify-content: center;
-    gap: 2em;
+    flex: none;
+    margin: 0;
+    height: 540px;
   }
-  .concept-block--tategaki h2 { margin: 0 0 0 1em; line-height: 2; }
-  .concept-block--tategaki p { margin: 0; line-height: 2.6; }
-  .concept-block--tategaki p + p { margin-right: 1.4em; }
+  .concept-block--tategaki h2 { line-height: 2; margin-left: 0.6em; }
+  .concept-block--tategaki p { line-height: 2.3; text-wrap: balance; }
+  .concept-block--tategaki p br { display: none; }
 }
 .gallery {
   display: grid;
@@ -677,7 +703,7 @@ p + p { margin-top: 1em; }
 .media-list a:hover { background: rgba(255,255,255,0.03); color: var(--gold-light); }
 .media-list time { font-size: 0.85rem; color: var(--gold-light); letter-spacing: 0.1em; }
 .media-list .kind { font-size: 0.7rem; letter-spacing: 0.15em; border: 1px solid var(--gold-dark); color: var(--gold-light); text-align: center; padding: 1px 4px; }
-.media-list .ext { font-size: 0.75rem; color: var(--muted); }
+.media-list .ext { font-size: 0.75rem; color: var(--muted); white-space: nowrap; }
 
 /* ------------------------------------------------------------------ お知らせ一覧・記事 */
 .article { padding: clamp(28px, 4vw, 48px); background: var(--bg-2); border: 1px solid var(--line); }
@@ -685,7 +711,7 @@ p + p { margin-top: 1em; }
 .article time { font-size: 0.85rem; color: var(--gold-light); letter-spacing: 0.1em; }
 .article h2 { font-size: 1.25rem; letter-spacing: 0.1em; color: #fff; margin: 0.4em 0 1em; padding-bottom: 0.6em; border-bottom: 1px solid var(--line); }
 .article p { color: var(--fg-soft); }
-.article .article__img { margin-top: 1.6em; max-width: 560px; }
+.article .article__img { margin-top: 1.6em; width: 100%; max-width: 560px; }
 .article .article__link { color: var(--gold-light); }
 .article .article__link:hover { text-decoration: underline; }
 .article .article__price { font-size: 1.1rem; color: #fff; margin-top: 0.6em; }
@@ -747,6 +773,7 @@ p + p { margin-top: 1em; }
   .catch, .feature, .concept-block, .seat, .access, .course-card { grid-template-columns: 1fr; }
   .feature--rev .feature__img, .concept-block--rev .concept-block__img, .seat:nth-child(even) .seat__img { order: 0; }
   .catch__img img { aspect-ratio: 4 / 3; }
+  .catch__img::before { inset: 14px -14px -14px 14px; }
   .gallery { grid-template-columns: repeat(2, 1fr); gap: 10px; }
   .sister-grid { grid-template-columns: 1fr; }
   .bottom-bar { display: flex; }
@@ -757,7 +784,8 @@ p + p { margin-top: 1em; }
   body { font-size: 14px; }
   .btn { min-width: 0; width: 100%; max-width: 320px; }
   .news-list a, .news-list .news-row { grid-template-columns: 1fr; gap: 4px; padding: 16px 4px; }
-  .media-list a { grid-template-columns: auto auto; gap: 6px 12px; }
+  .media-list a { grid-template-columns: auto 1fr; gap: 6px 12px; }
+  .media-list .kind { justify-self: start; }
   .media-list a .title { grid-column: 1 / -1; }
   .media-list a .ext { grid-column: 1 / -1; }
   .access dl { grid-template-columns: 1fr; gap: 0.2em; }
