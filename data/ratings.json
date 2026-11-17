@@ -1,11 +1,13 @@
 {
   "google": {
-    "place_id": "",
+    "place_id": "ChIJ2-hj8gGJGGARegj-7tB5yUo",
     "query": "錦糸町 炭火 成る 東京都墨田区江東橋2-7-6",
-    "rating": null,
-    "count": null,
-    "url": "https://www.google.com/maps/search/?api=1&query=%E9%8C%A6%E7%B3%B8%E7%94%BA%20%E7%82%AD%E7%81%AB%20%E6%88%90%E3%82%8B%20%E6%9D%B1%E4%BA%AC%E9%83%BD%E5%A2%A8%E7%94%B0%E5%8C%BA%E6%B1%9F%E6%9D%B1%E6%A9%8B2-7-6",
-    "updated": null
+    "rating": 4.7,
+    "count": 114,
+    "url": "https://maps.google.com/?cid=5388972367395293306&g_mp=CiVnb29nbGUubWFwcy5wbGFjZXMudjEuUGxhY2VzLkdldFBsYWNlEAIYBCAA",
+    "updated": "2026-11-17",
+    "matched_name": "錦糸町炭火成る",
+    "matched_address": "〒130-0022 東京都墨田区江東橋２丁目７−６ Uビル 2階"
   },
   "tabelog": {
     "score": 3.5,
