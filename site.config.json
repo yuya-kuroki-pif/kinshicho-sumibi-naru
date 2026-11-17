@@ -56,5 +56,25 @@
       "path": "/privacy/",
       "title": "個人情報保護方針"
     }
+  ],
+  "dns_records": [
+    {
+      "type": "A",
+      "name": "mail",
+      "content": "162.43.101.78",
+      "proxied": false,
+      "note": "旧 Xserver のメールサーバー（切替前の MX 相当を維持）"
+    },
+    {
+      "type": "MX",
+      "name": "@",
+      "content": "mail.kinshicho-sumibi-naru.com",
+      "priority": 0
+    },
+    {
+      "type": "TXT",
+      "name": "@",
+      "content": "v=spf1 +a:sv14877.xserver.jp +a:kinshicho-sumibi-naru.com +mx include:spf.sender.xserver.jp ~all"
+    }
   ]
 }
